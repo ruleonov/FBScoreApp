@@ -1,0 +1,268 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-16 22:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app/i18n.py:29
+msgid "AL East"
+msgstr ""
+
+#: app/i18n.py:30
+msgid "AL Central"
+msgstr ""
+
+#: app/i18n.py:31
+msgid "AL West"
+msgstr ""
+
+#: app/i18n.py:32
+msgid "NL East"
+msgstr ""
+
+#: app/i18n.py:33
+msgid "NL Central"
+msgstr ""
+
+#: app/i18n.py:34
+msgid "NL West"
+msgstr ""
+
+#: app/i18n.py:35
+msgid "AL Wild Card Series"
+msgstr ""
+
+#: app/i18n.py:36
+msgid "NL Wild Card Series"
+msgstr ""
+
+#: app/i18n.py:37
+msgid "AL Division Series"
+msgstr ""
+
+#: app/i18n.py:38
+msgid "NL Division Series"
+msgstr ""
+
+#: app/i18n.py:39
+msgid "AL Championship Series"
+msgstr ""
+
+#: app/i18n.py:40
+msgid "NL Championship Series"
+msgstr ""
+
+#: app/i18n.py:41
+msgid "World Series"
+msgstr ""
+
+#: app/templates/_macros.html:10
+msgid "Final"
+msgstr ""
+
+#: app/templates/_macros.html:11
+msgid "Postponed"
+msgstr ""
+
+#: app/templates/_macros.html:12
+msgid "Cancelled"
+msgstr ""
+
+#: app/templates/_macros.html:13
+msgid "Suspended"
+msgstr ""
+
+#: app/templates/_macros.html:14
+msgid "In progress"
+msgstr ""
+
+#: app/templates/_macros.html:15
+msgid "Scheduled"
+msgstr ""
+
+#: app/templates/_macros.html:20
+msgid "Pheebik"
+msgstr ""
+
+#: app/templates/base.html:38
+msgid "Our Telegram channel"
+msgstr ""
+
+#: app/templates/base.html:43
+msgid "Telegram"
+msgstr ""
+
+#: app/templates/base.html:47
+msgid "Sections"
+msgstr ""
+
+#: app/templates/base.html:48 app/templates/scores.html:3
+msgid "MLB scores"
+msgstr ""
+
+#: app/templates/base.html:49
+msgid "Standings"
+msgstr ""
+
+#: app/templates/game.html:7
+msgid "Back to scores"
+msgstr ""
+
+#: app/templates/game.html:35 app/templates/standings.html:20
+msgid "Team"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "Runs"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "R"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "Hits"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "H"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "Errors"
+msgstr ""
+
+#: app/templates/game.html:37
+msgid "E"
+msgstr ""
+
+#: app/templates/game.html:58
+msgid "Runs by inning"
+msgstr ""
+
+#: app/templates/game.html:75
+msgid "Win"
+msgstr ""
+
+#: app/templates/game.html:75
+msgid "Loss"
+msgstr ""
+
+#: app/templates/game.html:75
+msgid "Save"
+msgstr ""
+
+#: app/templates/scores.html:7
+msgid "Previous day"
+msgstr ""
+
+#: app/templates/scores.html:11
+msgid "Next day"
+msgstr ""
+
+#: app/templates/scores.html:17
+msgid "No games on this day"
+msgstr ""
+
+#: app/templates/scores.html:17
+msgid "Pheebik checked: no MLB games were played. Try another date."
+msgstr ""
+
+#: app/templates/standings.html:3
+msgid "MLB standings"
+msgstr ""
+
+#: app/templates/standings.html:7
+msgid "No standings yet"
+msgstr ""
+
+#: app/templates/standings.html:7
+msgid "Pheebik hasn't loaded any standings for this season."
+msgstr ""
+
+#: app/templates/standings.html:9
+#, python-format
+msgid "%(season)s regular season"
+msgstr ""
+
+#: app/templates/standings.html:11
+msgid "American League"
+msgstr ""
+
+#: app/templates/standings.html:11
+msgid "National League"
+msgstr ""
+
+#: app/templates/standings.html:21
+msgid "Wins"
+msgstr ""
+
+#: app/templates/standings.html:21 app/templates/standings.html:45
+msgid "W"
+msgstr ""
+
+#: app/templates/standings.html:21
+msgid "Losses"
+msgstr ""
+
+#: app/templates/standings.html:21 app/templates/standings.html:45
+msgid "L"
+msgstr ""
+
+#: app/templates/standings.html:22
+msgid "Winning percentage"
+msgstr ""
+
+#: app/templates/standings.html:22
+msgid "PCT"
+msgstr ""
+
+#: app/templates/standings.html:22
+msgid "Games behind"
+msgstr ""
+
+#: app/templates/standings.html:22
+msgid "GB"
+msgstr ""
+
+#: app/templates/standings.html:23
+msgid "Home"
+msgstr ""
+
+#: app/templates/standings.html:24
+msgid "Away"
+msgstr ""
+
+#: app/templates/standings.html:25
+msgid "Last 10 games"
+msgstr ""
+
+#: app/templates/standings.html:25
+msgid "L10"
+msgstr ""
+
+#: app/templates/standings.html:26
+msgid "Strk"
+msgstr ""
+
+#: app/templates/standings.html:37
+msgid "Clinched a playoff spot"
+msgstr ""
+
+#: app/templates/standings.html:37
+msgid "x"
+msgstr ""
+

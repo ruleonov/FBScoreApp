@@ -110,15 +110,31 @@ def test_pages_render(session):
 
     with TestClient(app) as client:
         r = client.get("/mlb")  # defaults to the latest day with games
-        assert r.status_code == 200 and "World Series" in r.text
+        assert r.status_code == 200
+        assert "FBScoreApp" in r.text and "Мировая серия" in r.text  # round names translated
+        assert "Brewers" in r.text  # team names stay in English
+        assert "https://t.me/baseballpeople" in r.text
+        assert "NPB" not in r.text and "KBO" not in r.text
 
         r = client.get("/mlb?day=2026-12-25")
-        assert r.status_code == 200 and "No games on this day" in r.text
+        assert r.status_code == 200 and "В этот день игр не было" in r.text
+        assert "Пятница, 25 декабря 2026" in r.text  # dates in Russian
 
         r = client.get(f"/mlb/game/{ws.id}")
-        assert r.status_code == 200 and "Runs by inning" in r.text
+        assert r.status_code == 200 and "Раны по иннингам" in r.text
 
         r = client.get("/mlb/standings")
-        assert r.status_code == 200 and "AL East" in r.text
+        assert r.status_code == 200 and "Восточный дивизион" in r.text
 
         assert client.get("/mlb/game/999999").status_code == 404
+
+
+def test_russian_translation_is_complete():
+    from babel.messages.pofile import read_po
+
+    with open("app/translations/messages.pot", "rb") as f:
+        template_ids = {m.id for m in read_po(f) if m.id}
+    with open("app/translations/ru/LC_MESSAGES/messages.po", "rb") as f:
+        ru = {m.id: m.string for m in read_po(f, locale="ru") if m.id}
+    missing = sorted(i for i in template_ids if not ru.get(i))
+    assert not missing, f"untranslated: {missing}"

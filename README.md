@@ -1,7 +1,8 @@
-# BaseballScore
+# FBScoreApp
 
-Final results and standings for MLB, NPB, KBO, the World Baseball Classic and the Olympics.
-Personal, non-commercial learning project. Mascot: Pheebik (Фибик).
+MLB final results and division standings, with the interface in Russian
+(team names stay in English). Personal, non-commercial learning project.
+Mascot: Pheebik (Фибик). Telegram: https://t.me/baseballpeople
 
 ## Setup
 
@@ -32,6 +33,19 @@ Then open http://127.0.0.1:8000.
 .venv/bin/python -m pytest -q
 ```
 
+## Changing interface text
+
+Text is written in English inside `_()` and translated in
+`app/translations/ru/LC_MESSAGES/messages.po`. After changing it:
+
+```bash
+.venv/bin/pybabel extract -F babel.cfg -k N_ -o app/translations/messages.pot .
+.venv/bin/pybabel update -i app/translations/messages.pot -d app/translations
+.venv/bin/pybabel compile -d app/translations
+```
+
+A test fails if any text is left untranslated.
+
 ## Layout
 
 | Path | What it does |
@@ -42,6 +56,7 @@ Then open http://127.0.0.1:8000.
 | `app/queries.py` | Read helpers for the pages. |
 | `app/main.py` | FastAPI routes. |
 | `app/templates/` | Jinja2 pages. All text goes through `_()` for translation. |
-| `app/i18n.py` | Translation setup (English now, Russian later). |
+| `app/i18n.py` | Translation setup; Russian is the default language. |
+| `app/translations/` | Russian translations (`.po` source, compiled `.mo`). |
 | `scripts/backfill.py` | Loads a season or date range. |
 | `tests/fixtures/` | Saved real API responses used by the tests. |

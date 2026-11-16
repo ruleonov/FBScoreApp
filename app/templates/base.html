@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}BaseballScore{% endblock %}</title>
+  <title>{% block title %}FBScoreApp{% endblock %}</title>
   <link rel="icon" href="/static/mascot/pheebik-wave.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap&subset=cyrillic,latin" rel="stylesheet">
@@ -28,29 +28,26 @@
 </head>
 <body class="bg-cream text-ink font-sans antialiased">
   <div class="mx-auto max-w-3xl px-4 pb-16">
-    <header class="flex items-center gap-2 pt-5">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/static/mascot/pheebik-wave.png" alt="" class="h-10 w-14 object-contain">
-        <span class="text-xl font-bold">Baseball<span class="text-brand">Score</span></span>
+    <header class="flex items-center justify-between gap-2 pt-5">
+      <a href="/" class="flex min-w-0 items-center gap-2">
+        <img src="/static/mascot/pheebik-wave.png" alt="" class="h-10 w-14 shrink-0 object-contain">
+        <span class="whitespace-nowrap text-xl font-bold">FBScore<span class="text-brand">App</span></span>
+      </a>
+      <a href="{{ telegram_url }}" target="_blank" rel="noopener noreferrer"
+         class="flex shrink-0 items-center gap-2 rounded-full bg-white p-1.5 text-sm sm:pr-4 font-semibold shadow-card transition hover:ring-2 hover:ring-brand-light"
+         aria-label="{{ _('Our Telegram channel') }}">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" aria-hidden="true">
+          <circle cx="12" cy="12" r="12" fill="#229ED9"/>
+          <path fill="#fff" d="M5.43 11.87c3.5-1.52 5.83-2.53 7-3.01 3.33-1.39 4.02-1.63 4.47-1.64.1 0 .32.02.47.14.12.1.15.23.17.33.02.09.04.3.02.47-.18 1.9-.96 6.5-1.36 8.63-.17.9-.5 1.2-.82 1.23-.7.06-1.23-.46-1.9-.9-1.06-.7-1.66-1.13-2.68-1.8-1.19-.78-.42-1.21.26-1.91.18-.18 3.25-2.98 3.31-3.23 0-.03.01-.15-.06-.21-.07-.06-.17-.04-.25-.02-.1.02-1.8 1.14-5.06 3.35-.48.33-.91.49-1.3.48-.43-.01-1.25-.24-1.87-.44-.75-.25-1.35-.37-1.3-.79.03-.22.33-.44.9-.66z"/>
+        </svg>
+        <span class="hidden sm:inline">{{ _("Telegram") }}</span>
       </a>
     </header>
 
-    <nav class="mt-4 flex flex-wrap gap-2" aria-label="{{ _('Leagues') }}">
-      {% for id, label, enabled in league_tabs %}
-        {% if enabled %}
-          <a href="/{{ id }}" class="rounded-full px-4 py-1.5 text-sm font-semibold {{ 'bg-brand text-white' if id == league else 'bg-white text-ink shadow-card' }}">{{ label }}</a>
-        {% else %}
-          <span class="rounded-full bg-white/60 px-4 py-1.5 text-sm text-ink-muted" title="{{ _('Coming soon') }}">{{ label }}</span>
-        {% endif %}
-      {% endfor %}
+    <nav class="mt-5 flex gap-6 border-b border-brand-light text-sm font-semibold" aria-label="{{ _('Sections') }}">
+      <a href="/mlb" class="whitespace-nowrap pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'scores' else 'text-ink-muted' }}">{{ _("MLB scores") }}</a>
+      <a href="/mlb/standings" class="whitespace-nowrap pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'standings' else 'text-ink-muted' }}">{{ _("Standings") }}</a>
     </nav>
-
-    {% if league == "mlb" %}
-    <div class="mt-4 flex gap-6 border-b border-brand-light text-sm font-semibold">
-      <a href="/mlb" class="pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'scores' else 'text-ink-muted' }}">{{ _("Scores") }}</a>
-      <a href="/mlb/standings" class="pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'standings' else 'text-ink-muted' }}">{{ _("Standings") }}</a>
-    </div>
-    {% endif %}
 
     <main class="mt-5">{% block content %}{% endblock %}</main>
   </div>

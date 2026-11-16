@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% from "_macros.html" import logo, status_label with context %}
 {% set g = v.game %}
-{% block title %}{{ v.away.abbreviation }} {{ g.away_score }} – {{ v.home.abbreviation }} {{ g.home_score }} · BaseballScore{% endblock %}
+{% block title %}{{ v.away.abbreviation }} {{ g.away_score }} – {{ v.home.abbreviation }} {{ g.home_score }} · FBScoreApp{% endblock %}
 {% block content %}
 
 <a href="/mlb?day={{ g.game_date }}" class="text-sm font-semibold text-brand">‹ {{ _("Back to scores") }}</a>
 
 <section class="mt-3 rounded-card bg-white p-5 shadow-card">
-  {% if g.round_name %}<p class="text-center text-xs font-semibold text-brand">{{ g.round_name }}</p>{% endif %}
+  {% if g.round_name %}<p class="text-center text-xs font-semibold text-brand">{{ _(g.round_name) }}</p>{% endif %}
   <div class="mt-1 flex items-center justify-around text-center">
     {% for side, team in [("away", v.away), ("home", v.home)] %}
       <div class="flex w-24 flex-col items-center gap-1 {{ 'order-3' if side == 'home' else 'order-1' }}">
@@ -34,7 +34,7 @@
       <tr>
         <th class="py-1 text-left font-semibold">{{ _("Team") }}</th>
         {% for inn in v.innings %}<th class="w-7 font-semibold">{{ inn.inning }}</th>{% endfor %}
-        <th class="w-8 font-bold text-ink">R</th><th class="w-8 font-semibold">H</th><th class="w-8 font-semibold">E</th>
+        <th class="w-8 font-bold text-ink" title="{{ _('Runs') }}">{{ _("R") }}</th><th class="w-8 font-semibold" title="{{ _('Hits') }}">{{ _("H") }}</th><th class="w-8 font-semibold" title="{{ _('Errors') }}">{{ _("E") }}</th>
       </tr>
     </thead>
     <tbody>

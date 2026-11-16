@@ -1,4 +1,4 @@
-"""BaseballScore web app.
+"""FBScoreApp web app.
 
 Run:  .venv/bin/uvicorn app.main:app --reload
 """
@@ -19,30 +19,25 @@ from app.i18n import template_context
 
 APP_DIR = Path(__file__).parent
 
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
     yield
 
 
-app = FastAPI(title="BaseballScore", lifespan=lifespan)
+app = FastAPI(title="FBScoreApp", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=APP_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=APP_DIR / "templates")
 
-LEAGUE_TABS = [
-    ("mlb", "MLB", True),
-    ("npb", "NPB", False),
-    ("kbo", "KBO", False),
-    ("wbc", "WBC", False),
-    ("olympics", "Olympics", False),
-]
+TELEGRAM_URL = "https://t.me/baseballpeople"
 
 MLB_DIVISION_ORDER = ["AL East", "AL Central", "AL West", "NL East", "NL Central", "NL West"]
 
 
 def render(request: Request, name: str, **context):
-    ctx = template_context("en")
-    ctx.update(request=request, league_tabs=LEAGUE_TABS, **context)
+    ctx = template_context()
+    ctx.update(request=request, telegram_url=TELEGRAM_URL, **context)
     return templates.TemplateResponse(request, name, ctx)
 
 

@@ -17,7 +17,7 @@
 
 {% macro mascot_message(title, text) -%}
   <div class="flex flex-col items-center rounded-card bg-white px-6 py-10 text-center shadow-card">
-    <img src="/static/mascot/pheebik-wave.png" alt="Pheebik" class="h-36 object-contain">
+    <img src="/static/mascot/pheebik-wave.png" alt="{{ _('Pheebik') }}" class="h-36 object-contain">
     <p class="mt-4 text-lg font-bold">{{ title }}</p>
     <p class="mt-1 text-sm text-ink-muted">{{ text }}</p>
   </div>

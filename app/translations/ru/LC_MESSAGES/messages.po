@@ -1,0 +1,270 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-16 22:10+0200\n"
+"PO-Revision-Date: 2026-11-16 22:10+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || "
+"n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app/i18n.py:29
+msgid "AL East"
+msgstr "Восточный дивизион"
+
+#: app/i18n.py:30
+msgid "AL Central"
+msgstr "Центральный дивизион"
+
+#: app/i18n.py:31
+msgid "AL West"
+msgstr "Западный дивизион"
+
+#: app/i18n.py:32
+msgid "NL East"
+msgstr "Восточный дивизион"
+
+#: app/i18n.py:33
+msgid "NL Central"
+msgstr "Центральный дивизион"
+
+#: app/i18n.py:34
+msgid "NL West"
+msgstr "Западный дивизион"
+
+#: app/i18n.py:35
+msgid "AL Wild Card Series"
+msgstr "Серия уайлд-кард АЛ"
+
+#: app/i18n.py:36
+msgid "NL Wild Card Series"
+msgstr "Серия уайлд-кард НЛ"
+
+#: app/i18n.py:37
+msgid "AL Division Series"
+msgstr "Дивизионная серия АЛ"
+
+#: app/i18n.py:38
+msgid "NL Division Series"
+msgstr "Дивизионная серия НЛ"
+
+#: app/i18n.py:39
+msgid "AL Championship Series"
+msgstr "Финал Американской лиги"
+
+#: app/i18n.py:40
+msgid "NL Championship Series"
+msgstr "Финал Национальной лиги"
+
+#: app/i18n.py:41
+msgid "World Series"
+msgstr "Мировая серия"
+
+#: app/templates/_macros.html:10
+msgid "Final"
+msgstr "Завершён"
+
+#: app/templates/_macros.html:11
+msgid "Postponed"
+msgstr "Перенесён"
+
+#: app/templates/_macros.html:12
+msgid "Cancelled"
+msgstr "Отменён"
+
+#: app/templates/_macros.html:13
+msgid "Suspended"
+msgstr "Прерван"
+
+#: app/templates/_macros.html:14
+msgid "In progress"
+msgstr "Идёт"
+
+#: app/templates/_macros.html:15
+msgid "Scheduled"
+msgstr "Запланирован"
+
+#: app/templates/_macros.html:20
+msgid "Pheebik"
+msgstr "Фибик"
+
+#: app/templates/base.html:38
+msgid "Our Telegram channel"
+msgstr "Наш канал в Telegram"
+
+#: app/templates/base.html:43
+msgid "Telegram"
+msgstr "Telegram"
+
+#: app/templates/base.html:47
+msgid "Sections"
+msgstr "Разделы"
+
+#: app/templates/base.html:48 app/templates/scores.html:3
+msgid "MLB scores"
+msgstr "Результаты MLB"
+
+#: app/templates/base.html:49
+msgid "Standings"
+msgstr "Турнирная таблица"
+
+#: app/templates/game.html:7
+msgid "Back to scores"
+msgstr "Назад к результатам"
+
+#: app/templates/game.html:35 app/templates/standings.html:20
+msgid "Team"
+msgstr "Команда"
+
+#: app/templates/game.html:37
+msgid "Runs"
+msgstr "Раны"
+
+#: app/templates/game.html:37
+msgid "R"
+msgstr "Р"
+
+#: app/templates/game.html:37
+msgid "Hits"
+msgstr "Хиты"
+
+#: app/templates/game.html:37
+msgid "H"
+msgstr "Х"
+
+#: app/templates/game.html:37
+msgid "Errors"
+msgstr "Ошибки"
+
+#: app/templates/game.html:37
+msgid "E"
+msgstr "О"
+
+#: app/templates/game.html:58
+msgid "Runs by inning"
+msgstr "Раны по иннингам"
+
+#: app/templates/game.html:75
+msgid "Win"
+msgstr "Победа"
+
+#: app/templates/game.html:75
+msgid "Loss"
+msgstr "Поражение"
+
+#: app/templates/game.html:75
+msgid "Save"
+msgstr "Сейв"
+
+#: app/templates/scores.html:7
+msgid "Previous day"
+msgstr "Предыдущий день"
+
+#: app/templates/scores.html:11
+msgid "Next day"
+msgstr "Следующий день"
+
+#: app/templates/scores.html:17
+msgid "No games on this day"
+msgstr "В этот день игр не было"
+
+#: app/templates/scores.html:17
+msgid "Pheebik checked: no MLB games were played. Try another date."
+msgstr "Фибик проверил: в этот день матчей MLB не было. Выберите другую дату."
+
+#: app/templates/standings.html:3
+msgid "MLB standings"
+msgstr "Турнирная таблица MLB"
+
+#: app/templates/standings.html:7
+msgid "No standings yet"
+msgstr "Таблицы пока нет"
+
+#: app/templates/standings.html:7
+msgid "Pheebik hasn't loaded any standings for this season."
+msgstr "Фибик ещё не загрузил таблицу за этот сезон."
+
+#: app/templates/standings.html:9
+#, python-format
+msgid "%(season)s regular season"
+msgstr "Регулярный сезон %(season)s"
+
+#: app/templates/standings.html:11
+msgid "American League"
+msgstr "Американская лига"
+
+#: app/templates/standings.html:11
+msgid "National League"
+msgstr "Национальная лига"
+
+#: app/templates/standings.html:21
+msgid "Wins"
+msgstr "Победы"
+
+#: app/templates/standings.html:21 app/templates/standings.html:45
+msgid "W"
+msgstr "В"
+
+#: app/templates/standings.html:21
+msgid "Losses"
+msgstr "Поражения"
+
+#: app/templates/standings.html:21 app/templates/standings.html:45
+msgid "L"
+msgstr "П"
+
+#: app/templates/standings.html:22
+msgid "Winning percentage"
+msgstr "Процент побед"
+
+#: app/templates/standings.html:22
+msgid "PCT"
+msgstr "%"
+
+#: app/templates/standings.html:22
+msgid "Games behind"
+msgstr "Отставание от лидера"
+
+#: app/templates/standings.html:22
+msgid "GB"
+msgstr "Отст."
+
+#: app/templates/standings.html:23
+msgid "Home"
+msgstr "Дома"
+
+#: app/templates/standings.html:24
+msgid "Away"
+msgstr "В гостях"
+
+#: app/templates/standings.html:25
+msgid "Last 10 games"
+msgstr "Последние 10 игр"
+
+#: app/templates/standings.html:25
+msgid "L10"
+msgstr "Посл. 10"
+
+#: app/templates/standings.html:26
+msgid "Strk"
+msgstr "Серия"
+
+#: app/templates/standings.html:37
+msgid "Clinched a playoff spot"
+msgstr "Обеспечил место в плей-офф"
+
+#: app/templates/standings.html:37
+msgid "x"
+msgstr "x"
+
