@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo, mascot_message with context %}
+{% block title %}{{ _("MLB standings") }} {{ season or "" }} · BaseballScore{% endblock %}
+{% block content %}
+
+{% if not groups %}
+  {{ mascot_message(_("No standings yet"), _("Pheebik hasn't loaded any standings for this season.")) }}
+{% else %}
+<h1 class="text-lg font-bold">{{ _("%(season)s regular season") % {"season": season} }}</h1>
+
+{% for league_code, league_name in [("AL", _("American League")), ("NL", _("National League"))] %}
+  <h2 class="mt-6 text-sm font-bold uppercase tracking-wide text-brand">{{ league_name }}</h2>
+  <div class="mt-2 grid gap-3">
+  {% for group, rows in groups.items() if group.startswith(league_code) %}
+    <section class="overflow-x-auto rounded-card bg-white p-4 shadow-card">
+      <h3 class="font-bold">{{ group }}</h3>
+      <table class="mt-2 w-full text-sm">
+        <thead class="text-xs text-ink-muted">
+          <tr class="text-right">
+            <th class="py-1 text-left font-semibold">{{ _("Team") }}</th>
+            <th class="w-10 font-semibold">W</th><th class="w-10 font-semibold">L</th>
+            <th class="w-12 font-semibold">PCT</th><th class="w-10 font-semibold">GB</th>
+            <th class="hidden w-14 font-semibold sm:table-cell">{{ _("Home") }}</th>
+            <th class="hidden w-14 font-semibold sm:table-cell">{{ _("Away") }}</th>
+            <th class="hidden w-12 font-semibold sm:table-cell">L10</th>
+            <th class="w-12 font-semibold">{{ _("Strk") }}</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for s, team in rows %}
+          <tr class="border-t border-cream text-right">
+            <td class="py-2 text-left">
+              <span class="flex items-center gap-2">
+                <span class="w-4 text-xs font-bold {{ 'text-brand' if s.rank == 1 else 'text-ink-muted' }}">{{ s.rank }}</span>
+                {{ logo(team, "h-6 w-6") }}
+                <span class="font-semibold">{{ team.short_name }}</span>
+                {% if s.clinched %}<span class="rounded-full bg-brand-light px-1.5 text-[10px] font-bold text-brand-dark" title="{{ _('Clinched a playoff spot') }}">x</span>{% endif %}
+              </span>
+            </td>
+            <td class="font-semibold">{{ s.wins }}</td><td>{{ s.losses }}</td>
+            <td>{{ s.pct }}</td><td class="text-ink-muted">{{ s.games_back }}</td>
+            <td class="hidden sm:table-cell">{{ s.home_record or "" }}</td>
+            <td class="hidden sm:table-cell">{{ s.away_record or "" }}</td>
+            <td class="hidden sm:table-cell">{{ s.last_ten or "" }}</td>
+            <td class="{{ 'text-brand font-semibold' if s.streak and s.streak.startswith('W') else 'text-ink-muted' }}">{{ s.streak or "" }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  {% endfor %}
+  </div>
+{% endfor %}
+{% endif %}
+{% endblock %}

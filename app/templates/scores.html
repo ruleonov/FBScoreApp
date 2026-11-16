@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo, status_label, mascot_message with context %}
+{% block title %}{{ _("MLB scores") }} · {{ fmt_date(day) }} · BaseballScore{% endblock %}
+{% block content %}
+
+<div class="flex items-center justify-between">
+  {% if prev_day %}<a href="/mlb?day={{ prev_day }}" class="rounded-full bg-white px-3 py-1.5 text-sm font-semibold shadow-card" aria-label="{{ _('Previous day') }}">‹ {{ fmt_date(prev_day, "d MMM") }}</a>{% else %}<span></span>{% endif %}
+  <form action="/mlb" class="flex items-center gap-2">
+    <input type="date" name="day" value="{{ day }}" onchange="this.form.submit()" class="rounded-full border-0 bg-white px-3 py-1.5 text-sm font-semibold shadow-card">
+  </form>
+  {% if next_day %}<a href="/mlb?day={{ next_day }}" class="rounded-full bg-white px-3 py-1.5 text-sm font-semibold shadow-card" aria-label="{{ _('Next day') }}">{{ fmt_date(next_day, "d MMM") }} ›</a>{% else %}<span></span>{% endif %}
+</div>
+
+<h1 class="mt-5 text-lg font-bold">{{ fmt_date(day, "EEEE, d MMMM y") }}</h1>
+
+{% if not games %}
+  <div class="mt-4">{{ mascot_message(_("No games on this day"), _("Pheebik checked: no MLB games were played. Try another date.")) }}</div>
+{% else %}
+  <div class="mt-3 grid gap-3 sm:grid-cols-2">
+  {% for v in games %}
+    {% set g = v.game %}
+    <a href="/mlb/game/{{ g.id }}" class="block rounded-card bg-white p-4 shadow-card transition hover:ring-2 hover:ring-brand-light">
+      <div class="flex items-center justify-between text-xs font-semibold text-ink-muted">
+        <span>{{ status_label(g) }}</span>
+        {% if g.round_name %}<span class="rounded-full bg-brand-light px-2 py-0.5 text-brand-dark">{{ g.round_name }}</span>{% endif %}
+      </div>
+      {% for side, team, score in [("away", v.away, g.away_score), ("home", v.home, g.home_score)] %}
+        <div class="mt-2 flex items-center justify-between">
+          <span class="flex items-center gap-2 {{ 'font-bold' if v.winner_side == side else '' }}">{{ logo(team) }} {{ team.short_name }}</span>
+          <span class="text-lg {{ 'font-bold text-brand' if v.winner_side == side else 'text-ink-muted' }}">{{ score if score is not none else "–" }}</span>
+        </div>
+      {% endfor %}
+    </a>
+  {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}BaseballScore{% endblock %}</title>
+  <link rel="icon" href="/static/mascot/pheebik-wave.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap&subset=cyrillic,latin" rel="stylesheet">
+  {# Tailwind's dev CDN for now; Phase 1b replaces it with a compiled stylesheet. #}
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Manrope", "system-ui", "sans-serif"] },
+          colors: {
+            cream: "#FFF8F2",
+            brand: { DEFAULT: "#F26A1B", dark: "#C9520D", light: "#FFE3D1" },
+            ink: { DEFAULT: "#1A1A1A", muted: "#8A7A6E" },
+          },
+          borderRadius: { card: "1rem" },
+          boxShadow: { card: "0 2px 12px rgba(242,106,27,0.08)" },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+  <div class="mx-auto max-w-3xl px-4 pb-16">
+    <header class="flex items-center gap-2 pt-5">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/static/mascot/pheebik-wave.png" alt="" class="h-10 w-14 object-contain">
+        <span class="text-xl font-bold">Baseball<span class="text-brand">Score</span></span>
+      </a>
+    </header>
+
+    <nav class="mt-4 flex flex-wrap gap-2" aria-label="{{ _('Leagues') }}">
+      {% for id, label, enabled in league_tabs %}
+        {% if enabled %}
+          <a href="/{{ id }}" class="rounded-full px-4 py-1.5 text-sm font-semibold {{ 'bg-brand text-white' if id == league else 'bg-white text-ink shadow-card' }}">{{ label }}</a>
+        {% else %}
+          <span class="rounded-full bg-white/60 px-4 py-1.5 text-sm text-ink-muted" title="{{ _('Coming soon') }}">{{ label }}</span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    {% if league == "mlb" %}
+    <div class="mt-4 flex gap-6 border-b border-brand-light text-sm font-semibold">
+      <a href="/mlb" class="pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'scores' else 'text-ink-muted' }}">{{ _("Scores") }}</a>
+      <a href="/mlb/standings" class="pb-2 {{ 'border-b-2 border-brand text-brand' if tab == 'standings' else 'text-ink-muted' }}">{{ _("Standings") }}</a>
+    </div>
+    {% endif %}
+
+    <main class="mt-5">{% block content %}{% endblock %}</main>
+  </div>
+</body>
+</html>
